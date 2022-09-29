@@ -1,1 +1,79 @@
 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <link rel="stylesheet" href="./styles.css">
+<style>
+      </style>
+      </head>
+    <body>
+  <div>
+  <div class="m_logo">
+    <img src="https://ci5.googleusercontent.com/proxy/mE8y5Qlz2d48A-Splb9-_Fiwusq1B9T-eGqhuzm4_hTrUA=s0-d-e1-ft#http://logo.svg" alt="" class="m_center">
+  </div>
+  <div class="m_container">
+    <div class="m_firstColumn">
+      <div class="m_bill m_sectionGap">
+        <label for="m_bill-input" class="m_form-label">Bill</label>
+        <div class="m_icon-and-input">
+            <i class="m_fa m_fa-usd m_icon"></i>
+          <input type="number" class="m_form-control m_bill-input" id="m_bill-input" style="color:hsl(183,100%,15%);font-weight:700">
+        </div>
+        <p id="m_abc"></p>
+      </div>
+      <div class="m_tipDiv m_sectionGap">
+        <label for="m_custom" class="m_form-label">Select Tip %</label>
+        <div class="m_tip-tiles">
+          <div class="m_tip">5%</div>
+          <div class="m_tip">10%</div>
+          <div class="m_tip">15%</div>
+          <div class="m_tip">25%</div>
+          <div class="m_tip">50%</div>
+          <div class="m_customTip">
+            <input type="number" class="m_form-control m_custom" id="m_custom" style="color:hsl(183,100%,15%);font-weight:700">
+          </div>
+        </div>
+      </div>
+      <div class="m_people m_sectionGap">
+        <label for="m_people-input" class="m_form-label">Number Of People</label>
+        <div class="m_icon-and-input">
+          <i class="m_fa m_fa-user m_icon"></i>
+          <input type="number" class="m_form-control m_people-input" id="m_people-input" style="color:hsl(183,100%,15%);font-weight:700">
+        </div>
+        <p id="m_error" style="color:red;float:right"></p>
+      </div>     
+    </div>
+    <div class="m_secondColumn">
+      <div class="m_tipSection">
+        <div class="m_tipLabel">
+          <p>Tip Amount</p>
+          <p style="color:hsl(184,14%,56%)">/person</p>
+        </div>
+        <div class="m_calculatedTip">
+          <p class="m_totalTip" id="m_totalTip">$0.00</p>
+        </div>
+      </div>
+      <div class="m_totalSection">
+        <div class="m_total">
+          <p>Total</p>
+          <p style="color:hsl(184,14%,56%)">/person</p>
+        </div>
+        <div class="m_amount">
+          <p class="m_totalAmount" id="m_totalAmount">$0.00</p>
+        </div>
+      </div>
+      <div class="m_resetButton">
+        <button type="reset" class="m_btn m_btn-large m_btn-primary">Reset</button>
+      </div>
+    </div>
+  </div>
+  </div> 
+ 
+  <script src="./script.js"></script>
+  
+   
+   
+
+
+</body></html>
