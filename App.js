@@ -1,52 +1,57 @@
-let bill = document.querySelector('#bill');
-let people = document.querySelector('#numOfPeople');
-let custom = document.querySelector('#custom');
-let tipAmount = 0;
+const canvas = document.getElementById('drawing-board');
+const toolbar = document.getElementById('toolbar');
+const ctx = canvas.getContext('2d');
 
-const reset = document.querySelector('.reset');
-      tip = document.querySelector('.tip');
-      five = document.querySelector('.five');
-      ten = document.querySelector('.ten');
-      fifteen = document.querySelector('.fifteen');
-      twentyFive = document.querySelector('.twentyFive');
-      fifty = document.querySelector('.fifty');
-  
-    
-// get custom tip
-function getTipCustom() {
-  tipAmount = parseInt(custom.value, 10);
-}
+const canvasOffsetX = canvas.offsetLeft;
+const canvasOffsetY = canvas.offsetTop;
 
-// get tip
-document.querySelector('.tip-container').addEventListener('click', event => {
-  if (event.target !== five && event.target !== ten && event.target !== fifteen && event.target !== twentyFive && event.target !== fifty) {
-    return
-  }
-  tipAmount = event.target.value 
+canvas.width = window.innerWidth - canvasOffsetX;
+canvas.height = window.innerHeight - canvasOffsetY;
+
+let isPainting = false;
+let lineWidth = 5;
+let startX;
+let startY;
+
+toolbar.addEventListener('click', e => {
+    if (e.target.id === 'clear') {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
 });
 
-// calculate bill per person
-function calcBill() {
-  // get the bill
-  let totalBill = bill.value;
+toolbar.addEventListener('change', e => {
+    if(e.target.id === 'stroke') {
+        ctx.strokeStyle = e.target.value;
+    }
 
-  // number of people
-  let totalPeople = people.value;
-  let total = bill+(bill*tipAmount)/100;
+    if(e.target.id === 'lineWidth') {
+        lineWidth = e.target.value;
+    }
+    
+});
 
-  // tip per person
-  document.querySelector('#amount').value = (total * (tipAmount / 100)).toFixed(2);
+const draw = (e) => {
+    if(!isPainting) {
+        return;
+    }
 
-  // show total per person
-  document.querySelector('#total').value = total.toFixed(2);
+    ctx.lineWidth = lineWidth;
+    ctx.lineCap = 'round';
+
+    ctx.lineTo(e.clientX - canvasOffsetX, e.clientY);
+    ctx.stroke();
 }
 
-function resetEverything() {
-  location.reload();
-}
+canvas.addEventListener('mousedown', (e) => {
+    isPainting = true;
+    startX = e.clientX;
+    startY = e.clientY;
+});
 
-people.addEventListener('keyup', calcBill);
+canvas.addEventListener('mouseup', e => {
+    isPainting = false;
+    ctx.stroke();
+    ctx.beginPath();
+});
 
-custom.addEventListener('keyup', getTipCustom);
-
-reset.addEventListener('click', resetEverything);
+canvas.addEventListener('mousemove', draw);
