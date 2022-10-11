@@ -1,3 +1,4 @@
+// get input values
 let bill = document.querySelector('#bill');
 let people = document.querySelector('#numOfPeople');
 let custom = document.querySelector('#custom');
@@ -28,13 +29,11 @@ document.querySelector('.tip-container').addEventListener('click', event => {
 // calculate bill per person
 function calcBill() {
   // get the bill
-  let totalBill =(Number(bill.value) + tipValue)/people;
- 
- 
+  let totalBill = bill.value;
 
   // number of people
   let totalPeople = people.value;
-  let total = totalBill/ totalPeople;
+  let total = totalBill / totalPeople;
 
   // tip per person
   document.querySelector('#amount').value = (total * (tipAmount / 100)).toFixed(2);
