@@ -1,26 +1,82 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Drawing app</title>
-</head>
-<body>
-    <section class="container">
-        <div id="toolbar">
-            <h1>Draw.</h1>
-            <label for="stroke">Stroke</label>
-            <input id="stroke" name='stroke' type="color">
-            <label for="lineWidth">Line Width</label>
-            <input id="lineWidth" name='lineWidth' type="number" value="5">
-            <button id="clear">Clear</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/b7a7cffe76.js" crossorigin="anonymous"></script>
+    <link href="http://fonts.cdnfonts.com/css/space-mono" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="style.css" />
+    <title>March-22-Batch-JavaScript-Project|Tip calculator app</title>
+  </head>
+
+  <body>
+    <header>
+      <img src="images/logo.svg" alt="logo">
+    </header>
+    
+    <div class="container-fluid card" id="card">
+      <main>
+        <div class="card1">
+          <div class="div-bill">
+            <label for="bill" class="bill">Bill</label>
+            <br>
+            <input type="text" id="bill" name="bill" placeholder="0">
+          </div>
+  
+          <div class="tip-percent">
+            <p class="bill">Select Tip %</p>
+            <ul class="row row-cols-2 tip-container">
+              <li><input type="submit" value="5" class="tip five" readonly></li>
+              <li><input type="submit" value="10" class="tip ten" readonly></li>
+              <li><input type="submit" value="15" class="tip fifteen" readonly></li>
+              <li><input type="submit" value="25" class="tip twentyFive" readonly></li>
+              <li><input type="submit" value="50" class="tip fifty" readonly></li>
+              <li><input placeholder="Custom" id="custom"></li>
+            </ul>
+          </div>
+  
+          <div class="div-bill">
+            <label for="numOfPeople" class="bill">Number of People</label>
+            <br>
+            <input type="text" id="numOfPeople" name="numOfPeople" placeholder="0">
+          </div>
         </div>
-        <div class="drawing-board">
-            <canvas id="drawing-board"></canvas>
+
+        <div class="total-card">
+          <div>
+            <div class="amount">
+              <label for="amount">
+                <h5>Tip Amount</h5><p>/ person</p>
+              </label>
+              <input type="submit" id="amount" value="0.00" readonly>
+            </div>
+  
+            <div class="total">
+              <label for="total">
+                <h5>Total</h5><p>/ person</p>
+              </label>
+              <input type="submit" id="total" value="0.00" readonly>
+            </div>
+          </div>
+
+          <input type="submit" value="RESET" class="reset">
         </div>
-    </section>
-    <script src="./script.js"></script>
-</body>
+      </main>
+  
+      <footer>
+        <div class="attribution">
+          
+          Coded by <a href="https://github.com/sarikapanmand">sarikapanmand</a>.
+        </div>
+      </footer>
+    </div>
+   
+    <script src="tip.js"></script>
+  </body>
 </html>
-Footer
