@@ -1,169 +1,169 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
-
-.attribution { font-size: 11px; text-align: center; }
-.attribution a { color: hsl(228, 45%, 44%); }
-body{
-    background-color: hsl(185, 41%, 84%);
-    font-family: 'Space Mono', monospace;
-    font-size: 18px;
-    height:100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+* li {
+  list-style: none;
+  height: 8vh;
 }
 
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 10%;
-    height: 25;
+* li input {
+  height: 6vh;
+  text-align: center;
+  width: 95%;
+}
+
+input {
+  color: hsl(183, 90%, 19%);
+}
+
+* {
+  font-family: Space Mono;
+}
+
+body {
+  background-color: hsl(185, 41%, 84%);
+}
+
+header {
+  padding: 40px 0 40px 0;
+  text-align: center;
+}
+
+#card {
+  border-radius: 5%;
+}
+
+.total-card {
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(183, 90%, 19%);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+main {
+  padding: 5%;
+}
+ 
+.div-bill {
+  padding-bottom: 20px;
+}
+
+.bill {
+  color: hsl(186, 14%, 43%);
+  font-weight: 700;
+}
+
+#bill {
+  background: url(images/icon-dollar.svg) no-repeat scroll 10px;
+  direction: rtl;
+  padding: 0 10px 10px 0;
+  width: 100%;
+  font-weight: 700;
+  font-size: xx-large;
+} 
+
+input {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#bill, #numOfPeople, #custom {
+  background-color: hsl(189, 41%, 97%)!important;
+  font-weight: 700;
+}
+
+.tip {
+  color: hsl(0, 0%, 100%);
+  font-weight: 700;
+  background-color: hsl(183, 100%, 15%);
+  border-radius: 5px;
+}
+
+.tip:active {
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  transform: translateY(4px);
+}
+
+#custom {
+  color: hsl(186, 14%, 43%);
+}
+
+.tip:hover {
+  background-color: hsl(172, 70%, 68%);
+  color: hsl(186, 14%, 43%);
+}
+
+.tip:focus {
+  background-color: hsl(172, 67%, 45%);
+}
+
+#numOfPeople {
+  background: url(images/icon-person.svg) no-repeat scroll 10px;
+  direction: rtl;
+  width: 100%;
+  font-weight: 700;
+  font-size: xx-large;
+}
+
+.amount, .total {
+  display: flex;
+  justify-content: space-between;
+}
+
+#amount, #total {
+  background-color: hsl(183, 90%, 19%);
+  color: hsl(172, 67%, 45%);
+  font-weight: 700;
+  font-size: xx-large;
+}
+
+h5 {
+  color: hsl(189, 41%, 97%);
+  font-weight: 1000;
+}
+
+.reset {
+  height: 8vh;
+  background-color: hsl(172, 67%, 45%);
+  font-weight: 1000;
+  font-size: x-large;
+  color: hsl(183, 90%, 19%);
+}
+
+.reset:active {
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  transform: translateY(4px);
+}
+
+.reset:focus {
+  background-color: hsl(172, 67%, 45%);
+}
+
+.reset:hover {
+  background-color: hsl(172, 70%, 68%);
+}
+
+.total-card p {
+  color: hsl(172, 67%, 45%);
+  font-weight: 500;
+}
+
+
+@media only screen and (min-width: 770px) {
+  main {
+    display: flex;
+    justify-content: space-between;
   }
-/*******main container**********/
-.container{
-    width:60%;
-    padding:30px;
-    background-color: #fff;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-@media(max-width:960px){
-   body{
-    height:auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+  .card {
+    width: 70%;
+    height: 70vh;
+  }
+
+  .card1, .total-card {
+    width: 48%
+  }
+
+  .total-card {
     justify-content: space-between;
-   }
-   body > div{
-    flex: auto 1 auto;
-    margin:20px;
-   }
-    .container{
-        display: block;
-        width:100%!important;
-    }
-    .secondColumn, .firstColumn{
-        width:100%!important;
-    }
-}
-/*************amount and tip calculator column***********/
-.secondColumn{
-    display:flex;
-    flex-direction: column;
-    background-color: hsl(183, 100%, 15%);
-    width:45%;
-    padding:30px;
-    border-radius: 15px;
-    color:#fff;
-}
-
-/*********Bill input column************/
-.firstColumn{
-    width:45%;
-}
-/*********tip and total section divs***********/
-
-.tipSection, .totalSection{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    flex-grow: 1;
-    margin-bottom:20px;
-}
-/***gap between /person text ***********/
-
-.totalSection p, .tipSection p{
-    margin:0;
-    padding:0;
-}
-
-/*********second column amount************/
-.totalAmount, .totalTip{
-    font-size:35px;
-    font-weight: 700;
-    color: hsl(172, 67%, 45%);
-}
-
-/*******Reset Button Style************/ 
-.resetButton{
-    margin-top:100px;
-}
-.btn{
-    width:100%;
-    background-color: hsl(172, 67%, 45%);
-    border:none;
-    color:hsl(183, 100%, 15%);
-    font-weight: 600;
-    text-transform: uppercase;
-    padding:10px;
-}
-.btn:hover, .tip:hover{
-    background-color: hsl(172, 67%, 45%);
-    color:hsl(183, 100%, 15%);
-    cursor: pointer;
-}
-
-/********tip tiles********/
-.tip-tiles{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
-.tip{
-    text-align: center;
-    background-color: hsl(183, 100%, 15%);
-    margin:5px;
-    color: hsl(185, 41%, 84%);
-    padding:10px;
-    font-weight: 600;
-    border-radius: 3px;
-}
-.customTip{
-    text-align: center;
-    background-color: hsl(189, 41%, 97%);
-    margin:5px;
-    color: hsl(183, 100%, 15%);
-    padding:10px;
-    font-weight: 700;
-    border-radius: 3px;
-}
-
-/**********gap between section in first columns*******/
-.sectionGap{
-    position: relative;
-    margin-bottom: 30px;    
-}
-
-/********number input type designs***********/
-.custom{
-    padding:0!important;
-}
-.form-control{
-    background-color: hsl(189, 41%, 97%);
-    border: none;
-    text-align: right;
-    color: hsl(183, 100%, 15%); 
-    font-weight: 700;
-    padding:10px;
-}
-.form-control:focus {
-    box-shadow: none;
-    background-color: hsl(189, 41%, 97%);
-}
-
-.icon-and-input{
-    position: relative;
-}
-.icon{
-    position:absolute;
-    top:50%;
-    left:0px;
-    transform: translateY(-50%);
-    padding:15px;
-    color:hsl(184, 14%, 56%);
+  }
 }
