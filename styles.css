@@ -1,49 +1,169 @@
+* li {
+  list-style: none;
+  height: 8vh;
+}
+
+* li input {
+  height: 6vh;
+  text-align: center;
+  width: 95%;
+}
+
+input {
+  color: hsl(183, 90%, 19%);
+}
+
+* {
+  font-family: Space Mono;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-    color: white;
+  background-color: hsl(185, 41%, 84%);
 }
 
-h1 {
-    background: #7F7FD5;
-    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
-    background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+header {
+  padding: 40px 0 40px 0;
+  text-align: center;
 }
 
-.container {
-    height: 100%;
+#card {
+  border-radius: 5%;
+}
+
+.total-card {
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(183, 90%, 19%);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+main {
+  padding: 5%;
+}
+ 
+.div-bill {
+  padding-bottom: 20px;
+}
+
+.bill {
+  color: hsl(186, 14%, 43%);
+  font-weight: 700;
+}
+
+#bill {
+  background: url(images/icon-dollar.svg) no-repeat scroll 10px;
+  direction: rtl;
+  padding: 0 10px 10px 0;
+  width: 100%;
+  font-weight: 700;
+  font-size: xx-large;
+} 
+
+input {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#bill, #numOfPeople, #custom {
+  background-color: hsl(189, 41%, 97%)!important;
+  font-weight: 700;
+}
+
+.tip {
+  color: hsl(0, 0%, 100%);
+  font-weight: 700;
+  background-color: hsl(183, 100%, 15%);
+  border-radius: 5px;
+}
+
+.tip:active {
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  transform: translateY(4px);
+}
+
+#custom {
+  color: hsl(186, 14%, 43%);
+}
+
+.tip:hover {
+  background-color: hsl(172, 70%, 68%);
+  color: hsl(186, 14%, 43%);
+}
+
+.tip:focus {
+  background-color: hsl(172, 67%, 45%);
+}
+
+#numOfPeople {
+  background: url(images/icon-person.svg) no-repeat scroll 10px;
+  direction: rtl;
+  width: 100%;
+  font-weight: 700;
+  font-size: xx-large;
+}
+
+.amount, .total {
+  display: flex;
+  justify-content: space-between;
+}
+
+#amount, #total {
+  background-color: hsl(183, 90%, 19%);
+  color: hsl(172, 67%, 45%);
+  font-weight: 700;
+  font-size: xx-large;
+}
+
+h5 {
+  color: hsl(189, 41%, 97%);
+  font-weight: 1000;
+}
+
+.reset {
+  height: 8vh;
+  background-color: hsl(172, 67%, 45%);
+  font-weight: 1000;
+  font-size: x-large;
+  color: hsl(183, 90%, 19%);
+}
+
+.reset:active {
+  box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+  transform: translateY(4px);
+}
+
+.reset:focus {
+  background-color: hsl(172, 67%, 45%);
+}
+
+.reset:hover {
+  background-color: hsl(172, 70%, 68%);
+}
+
+.total-card p {
+  color: hsl(172, 67%, 45%);
+  font-weight: 500;
+}
+
+
+@media only screen and (min-width: 770px) {
+  main {
     display: flex;
-}
+    justify-content: space-between;
+  }
 
-#toolbar {
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-    width: 70px;
-    background-color: #202020;
-}
+  .card {
+    width: 70%;
+    height: 70vh;
+  }
 
-#toolbar * {
-    margin-bottom: 6px;
-}
+  .card1, .total-card {
+    width: 48%
+  }
 
-#toolbar label {
-    font-size: 12px;
-}
-
-#toolbar input {
-    width: 100%;
-}
-
-#toolbar button {
-    background-color: #1565c0;
-    border: none;
-    border-radius: 4px;
-    color:white;
-    padding: 2px;
+  .total-card {
+    justify-content: space-between;
+  }
 }
