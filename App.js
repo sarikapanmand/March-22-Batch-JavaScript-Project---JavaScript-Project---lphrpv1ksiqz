@@ -28,11 +28,13 @@ document.querySelector('.tip-container').addEventListener('click', event => {
 // calculate bill per person
 function calcBill() {
   // get the bill
-  let totalBill = bill.value;
+  let totalBill =(Number(bill.value) + tipValue)/people;
+ 
+ 
 
   // number of people
   let totalPeople = people.value;
-  let total = totalBill+ tipAmount/ totalPeople;
+  let total = totalBill/ totalPeople;
 
   // tip per person
   document.querySelector('#amount').value = (total * (tipAmount / 100)).toFixed(2);
