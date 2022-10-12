@@ -1,50 +1,43 @@
-const billInput = document.querySelector("#bill-input");
-const tip = document.querySelectorAll(".tip");
-const totalTip = document.getElementById("totalTip");
-const custom = document.getElementById("custom");
-const numberOfPeople = document.getElementById("people-input");
-const totalAmount = document.querySelector("#totalAmount");
+// get input values
+let bill = document.querySelector('#bill');
+let people = document.querySelector('#numOfPeople');
+let custom = document.querySelector('#custom');
+let tipAmount = 0;
 
-let tipValue = 0;
-let people = 1;
-let tipPercent = 0;
-
-tip.forEach(function(val){
-    val.addEventListener("click", calculateTip);
-})
-
-function calculateTip(event){
-    if(custom.value !== ""){
-        tipPercent = Number(custom.value);
-    }else{
-        tipPercent = (event.target.innerHTML).replace("%", "");
-    }
-    tipValue = (tipPercent/100) * billInput.value;
-    totalTip.innerHTML = tipValue;
-    totalAmt();
-}
-
-custom.addEventListener("input", calculateTip);
-
-billInput.addEventListener("input", totalAmt);
-
-numberOfPeople.addEventListener("input", totalAmt);
-
-function totalAmt(){
-    people = Number(numberOfPeople.value);
-
-    if(people === "" || people === 0){
-        people = 1;
-    }
-    let total = (Number(billInput.value) + tipValue)/people;
-    totalAmount.innerHTML = "$" +total;
-}
-
-function reset(){
-    billInput.value = ""
-    custom.value = ""
-    numberOfPeople.value = ""
+const reset = document.querySelector('.reset');
+      tip = document.querySelector('.tip');
+      five = document.querySelector('.five');
+      ten = document.querySelector('.ten');
+      fifteen = document.querySelector('.fifteen');
+      twentyFive = document.querySelector('.twentyFive');
+      fifty = document.querySelector('.fifty');
+  
     
-    totalTip.innerHTML = "$0.00";
-    totalAmount.innerHTML = "$0.00";
+// get custom tip
+function getTipCustom() {
+  tipAmount = parseInt(custom.value, 10);
+}
+
+// get tip
+document.querySelector('.tip-container').addEventListener('click', event => {
+  if (event.target !== five && event.target !== ten && event.target !== fifteen && event.target !== twentyFive && event.target !== fifty) {
+    return
+  }
+  tipAmount = event.target.value 
+});
+
+// calculate bill per person
+function calcBill() {
+  // get the bill
+  let totalBill = bill.value;
+
+  // number of people
+  let totalPeople = people.value;
+  let total = totalBill / totalPeople;
+
+  // tip per person
+  document.querySelector('#amount').value = (total * (tipAmount / 100)).toFixed(2);
+
+  // show total per person
+  document.querySelector('#total').value = total.toFixed(2);
 }
