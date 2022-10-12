@@ -29,7 +29,7 @@ document.querySelector('.tip-container').addEventListener('click', event => {
 // calculate bill per person
 function calcBill() {
   // get the bill
-  let totalBill = bill.value;
+  let totalBill = bill+tipAmount;
 
   // number of people
   let totalPeople = people.value;
