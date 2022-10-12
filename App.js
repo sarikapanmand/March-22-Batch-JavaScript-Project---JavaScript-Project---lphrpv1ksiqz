@@ -41,3 +41,13 @@ function calcBill() {
   // show total per person
   document.querySelector('#total').value = total.toFixed(2);
 }
+
+function resetEverything() {
+  location.reload();
+}
+
+people.addEventListener('keyup', calcBill);
+
+custom.addEventListener('keyup', getTipCustom);
+
+reset.addEventListener('click', resetEverything);
