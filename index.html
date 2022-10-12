@@ -1,82 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/b7a7cffe76.js" crossorigin="anonymous"></script>
-    <link href="http://fonts.cdnfonts.com/css/space-mono" rel="stylesheet">
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-    <link rel="stylesheet" href="styles.css" />
-    <title>Javascript Mini Project | Tip calculator app</title>
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-css-reset/dist/reset.min.css" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="https://www.svgrepo.com/show/1360/calculator.svg" type="image/x-icon">
+    <title>March 22 Javascript Project||Tip Calculator </title>
+</head>
+<body>
+    <div class="root">
+        <h1 class="hero-title">Spli<br>tter</h1>
 
-  <body>
-    <header>
-      <img src="images/logo.svg" alt="logo">
-    </header>
+        <main class="form">
+
+        <div class="form-column">
+            <div class="form-row">
+                <label class="input-label" for="bill-amount">Bill</label>
+                <input 
+                type="text" name="bill-amount" id="bill-amount" class="app-number-input bill-amount-input"
+                pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false;">
+            </div>
+
+            <div class="form-row">
+                <p class="input-label">Select Tip %</p>
+
+                <div class="percentage-inputs-wrapper">
+                    <div>
+                        <label class="tip-percentage-label" for="5-percent">5%</label>
+                        <input type="radio" name="tip-percentage" data-percentage="0.05" id="5-percent" class="tip-percentage-input">
+                    </div>
+        
+                    <div>
+                        <label class="tip-percentage-label" for="10-percent">10%</label>
+                        <input type="radio" name="tip-percentage" data-percentage="0.10"  id="10-percent" class="tip-percentage-input">
+                    </div>
+        
+                    <div>
+                        <label class="tip-percentage-label" for="15-percent">15%</label>
+                        <input type="radio" name="tip-percentage" data-percentage="0.15"  id="15-percent" class="tip-percentage-input">
+                    </div>
+        
+                    <div>
+                        <label class="tip-percentage-label" for="25-percent">25%</label>
+                        <input type="radio" name="tip-percentage" data-percentage="0.25"  id="25-percent" class="tip-percentage-input">
+                    </div>
+        
+                    <div>
+                        <label class="tip-percentage-label" for="50-percent">50%</label>
+                        <input type="radio" name="tip-percentage" data-percentage="0.50"  id="50-percent" class="tip-percentage-input">
+                    </div>
+        
+                    <div>
+                        <!-- https://stackoverflow.com/questions/18510845/maxlength-ignored-for-input-type-number-in-chrome -->
+                        <input 
+                        type="text" name="tip-percentage" placeholder="Custom" id="custom-percent" class="custom-percentage-input" 
+                        pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==4) return false;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label class="input-label" for="number-of-people">Number of people</label>
+                <input 
+                type="text" name="number-of-people" id="number-of-people" class="app-number-input number-of-people-input"
+                pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==15) return false;" data-invalid="false" oninput="validateInput(this)">
+            </div>
+        </div>
+
+        <div class="form-column">
+            <div class="results-container">
+                <div>
+                    <div class="results-container-inner-wrapper">
+                        <div>
+                            <h2>Tip amount</h2>
+                            <span>/ person</span>
+                        </div>
     
-    <div class="container-fluid card" id="card">
-      <main>
-        <div class="card1">
-          <div class="div-bill">
-            <label for="bill" class="bill">Bill</label>
-            <br>
-            <input type="text" id="bill" name="bill" placeholder="0">
-          </div>
-  
-          <div class="tip-percent">
-            <p class="bill">Select Tip %</p>
-            <ul class="row row-cols-2 tip-container">
-              <li><input type="submit" value="5" class="tip five" readonly></li>
-              <li><input type="submit" value="10" class="tip ten" readonly></li>
-              <li><input type="submit" value="15" class="tip fifteen" readonly></li>
-              <li><input type="submit" value="25" class="tip twentyFive" readonly></li>
-              <li><input type="submit" value="50" class="tip fifty" readonly></li>
-              <li><input placeholder="Custom" id="custom"></li>
-            </ul>
-          </div>
-  
-          <div class="div-bill">
-            <label for="numOfPeople" class="bill">Number of People</label>
-            <br>
-            <input type="text" id="numOfPeople" name="numOfPeople" placeholder="0">
-          </div>
+                        <div class="result-span-wrapper">
+                            <span class="tip-per-person-result">$0.00</span>
+                        </div>
+                    </div>
+    
+                    <div class="results-container-inner-wrapper">
+                        <div>
+                            <h2>Total</h2>
+                            <span>/ person</span>
+                        </div>
+    
+                        <div class="result-span-wrapper">
+                            <span class="tip-total-result">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="reset-btn">Reset</button>
+            </div>
         </div>
 
-        <div class="total-card">
-          <div>
-            <div class="amount">
-              <label for="amount">
-                <h5>Tip Amount</h5><p>/ person</p>
-              </label>
-              <input type="submit" id="amount" value="0.00" readonly>
-            </div>
-  
-            <div class="total">
-              <label for="total">
-                <h5>Total</h5><p>/ person</p>
-              </label>
-              <input type="submit" id="total" value="0.00" readonly>
-            </div>
-          </div>
-
-          <input type="submit" value="RESET" class="reset">
-        </div>
-      </main>
-  
-      <footer>
-        <div class="attribution">
-         
-          Coded by <a href="https://github.com/sarikapanmand">Sarika Karle</a>.
-        </div>
-      </footer>
+        </main>
     </div>
-   
     <script src="App.js"></script>
-  </body>
+</body>
 </html>
