@@ -1,53 +1,89 @@
-// get input values
-let bill = document.querySelector('#bill');
-let people = document.querySelector('#numOfPeople');
-let custom = document.querySelector('#custom');
-let tipAmount = 0;
+// * Inputs
+const billAmountInput = document.querySelector('.bill-amount-input');
+const numberOfPeopleInput = document.querySelector('.number-of-people-input');
+const customPercentageInput = document.querySelector('.custom-percentage-input');
+const resetBtn = document.querySelector('.reset-btn')
 
-const reset = document.querySelector('.reset');
-      tip = document.querySelector('.tip');
-      five = document.querySelector('.five');
-      ten = document.querySelector('.ten');
-      fifteen = document.querySelector('.fifteen');
-      twentyFive = document.querySelector('.twentyFive');
-      fifty = document.querySelector('.fifty');
-  
-    
-// get custom tip
-function getTipCustom() {
-  tipAmount = parseInt(custom.value, 10);
+// * Result elements
+const tipPerPersonResultEl = document.querySelector('.tip-per-person-result');
+const tipTotalResultEl = document.querySelector('.tip-total-result');
+
+function getCheckedTipPercentage() {
+    if (customPercentageInput.value === "") {
+        return document.querySelector('.tip-percentage-input:checked').dataset['percentage'];
+    } else {
+        return Number((customPercentageInput.value) / 100);
+    }
 }
 
-// get tip
-document.querySelector('.tip-container').addEventListener('click', event => {
-  if (event.target !== five && event.target !== ten && event.target !== fifteen && event.target !== twentyFive && event.target !== fifty) {
-    return
-  }
-  tipAmount = event.target.value 
-});
+document.querySelector('.form').addEventListener('keyup', renderResult)
 
-// calculate bill per person
-function calcBill() {
-  // get the bill
-  let totalBill = bill.value;
+customPercentageInput.addEventListener('keydown', resetPercentageLabelsColor);
 
-  // number of people
-  let totalPeople = people.value;
-  let total =(Number(bill.value))/totalPeople;
+document.querySelectorAll('.tip-percentage-input').forEach((e) => {
+    e.addEventListener('change', () => {
+        customPercentageInput.value = "";
+        renderResult();
+    });
+})
 
-  // tip per person
-  document.querySelector('#amount').value = (total * (tipAmount / 100)).toFixed(2);
+const percentageLabels = document.querySelectorAll('.tip-percentage-label');
 
-  // show total per person
-  document.querySelector('#total').value = total.toFixed(2);
+percentageLabels.forEach((label) => {
+    label.addEventListener('click', (e) => {
+        resetPercentageLabelsColor();
+        e.target.style.backgroundColor = "var(--clr-strong-cyan)"
+    });
+})
+
+function resetPercentageLabelsColor() {
+    percentageLabels.forEach((label) => {
+        label.style.backgroundColor = "var(--clr-very-dark-cyan)"
+    })
 }
 
-function resetEverything() {
-  location.reload();
+function validateInput(e) {
+    if (e.value === "0" || e.value === "") {
+        e.dataset.invalid = "true"
+    } else {
+        e.dataset.invalid = "false"
+    }
 }
 
-people.addEventListener('keyup', calcBill);
+function renderResult() {
 
-custom.addEventListener('keyup', getTipCustom);
+    document.querySelector('.tip-percentage-input:checked').style.backgroundColor = "var(--clr-strong-cyan)"
 
-reset.addEventListener('click', resetEverything);
+    const billAmount = Number(billAmountInput.value);
+    const tipPercentage = Number(getCheckedTipPercentage());
+    const numberOfPeople = Number(numberOfPeopleInput.value);
+
+    if (billAmount === 0) {
+        billAmountInput.dataset.invalid = true;
+    } else {
+        billAmountInput.dataset.invalid = false;
+    }
+
+    const tipPerPerson = Number(((billAmount * tipPercentage) / numberOfPeople).toFixed(2));
+    const tipTotal = Number(((billAmount / numberOfPeople) + tipPerPerson).toFixed(2));
+    // const tipTotal = Number((tipPerPerson * numberOfPeople).toFixed(2))
+
+    if ( billAmount === 0 || tipPercentage === 0 || numberOfPeople === 0) {
+        tipPerPersonResultEl.textContent = `$0.00`;
+        tipTotalResultEl.textContent = `$0.00`;
+    } else {
+        tipPerPersonResultEl.textContent = `$${tipPerPerson}`;
+        tipTotalResultEl.textContent = `$${tipTotal}`;
+    }
+}
+
+resetBtn.addEventListener('click', resetForm)
+
+function resetForm() {
+    billAmountInput.value = 0;
+    numberOfPeopleInput.value = 0;
+    renderResult();
+}
+
+resetForm();
+validateInput(numberOfPeopleInput);
