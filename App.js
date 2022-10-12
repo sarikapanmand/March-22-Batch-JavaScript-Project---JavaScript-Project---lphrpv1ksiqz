@@ -39,7 +39,7 @@ function calcBill() {
   document.querySelector('#amount').value = (total * (tipAmount / 100)).toFixed(2);
 
   // show total per person
-  document.querySelector('#total').value = total.toFixed(2);
+  document.querySelector('#total').value = (total+(tipAmount).toFixed(2));
 }
 
 function resetEverything() {
