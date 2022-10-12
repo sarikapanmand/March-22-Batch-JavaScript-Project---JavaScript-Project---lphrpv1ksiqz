@@ -33,7 +33,7 @@ function calcBill() {
 
   // number of people
   let totalPeople = people.value;
-  let total = totalBill / totalPeople;
+  let total = (Number(bill.value) + tipAmount)/totalPeople;
 
   // tip per person
   document.querySelector('#amount').value = (total * (tipAmount / 100)).toFixed(2);
